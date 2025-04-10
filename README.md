@@ -62,11 +62,10 @@ RetroLauncher.CLI.exe projector.exe --infoHost=192.168.0.5 --infoPort=3000 --sso
 ```
 
 This command will:
-- Patch both `projector.exe` and `projector.dir`
+- Patch the projector into a new output file: `new_projector.exe`
 - Override the connection host and port
 - Enable SSO login
 - Tell the projector to make a request to ``http://localhost/api/login`` with ``username`` and ``password`` as GET parameters.
-- Embed the modified data into a new output file: `new_projector.exe` and `new_projector.dir`
 
 ---
 
