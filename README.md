@@ -21,11 +21,11 @@ You can download the latest releases at: https://github.com/Quackster/RetroLaunc
 
 ### 💻 Projector Source
 
-You can find the projector Director project under the /RetroLauncher.CLI/ folder.
+You can find the projector Director project under the /RetroLauncher.Projector/ folder.
 
 It requires [Director MX 2004](https://archive.org/details/director_mx_2004) to open projector.dir.
 
-All changes to the classes inside the .dir are avaliable inside /RetroLauncher.CLI/scripts/
+All changes to the classes inside the .dir are avaliable inside /RetroLauncher.Projector/scripts/
 
 ---
 
