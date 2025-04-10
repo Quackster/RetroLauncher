@@ -15,7 +15,7 @@ You can download the latest releases at: https://github.com/Quackster/RetroLaunc
 #### 🛠 Requirements
 
 - [.NET 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) or later installed
-- Your `.exe` and `.dir` files in the same directory as the CLI
+- Your `.exe` file in the same directory as the CLI
 
 ---
 
