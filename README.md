@@ -6,6 +6,19 @@ How it works is that it replaces the bytes of the executable itself with obfusca
 
 During its usage you'll see it creates a file called offsets.ini - this is so any subsequent patching will be faster, as it doesn't have to search for the offsets to replace the bytes at.
 
+---
+
+### 📂 Download
+
+You can download the latest releases at: https://github.com/Quackster/RetroLauncher/releases/tag/v0.1.0 
+
+#### 🛠 Requirements
+
+- [.NET 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) or later installed
+- Your `.exe` and `.dir` files in the same directory as the CLI
+
+---
+
 ### 💻 Projector Source
 
 You can find the projector Director project under the /RetroLauncher.CLI/ folder.
@@ -15,10 +28,6 @@ It requires [Director MX 2004](https://archive.org/details/director_mx_2004) to 
 All changes to the classes inside the .dir are avaliable inside /RetroLauncher.CLI/scripts/
 
 ---
-
-### Download
-
-You can download the latest releases at: https://github.com/Quackster/RetroLauncher/releases/tag/v0.1.0 
 
 ### 🚀 Usage
 
@@ -66,10 +75,3 @@ This command will:
 - New patched files will be created with the prefix `new_`
 - The script used for patching is internally defined and automatically adjusted based on your inputs
 - Rename either **config_sso.ini** or **config_no_sso.ini** to config.ini depending if you have SSO installed or not!
-
----
-
-## 🛠 Requirements
-
-- .NET Core 6 installed
-- Your `.exe` and `.dir` files in the same directory as the CLI
