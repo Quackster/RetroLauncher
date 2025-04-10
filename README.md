@@ -1,4 +1,4 @@
-# 🎯 RetroLauncher CLI
+### 🎯 RetroLauncher CLI
 
 A command-line tool to patch the Habbo Shockwave projector related files (`.exe`, `.dir`). 
 
@@ -6,7 +6,7 @@ How it works is that it replaces the bytes of the executable itself with obfusca
 
 During its usage you'll see it creates a file called offsets.ini - this is so any subsequent patching will be faster, as it doesn't have to search for the offsets to replace the bytes at.
 
-# 💻 Projector Source
+### 💻 Projector Source
 
 You can find the projector Director project under the /RetroLauncher.CLI/ folder.
 
@@ -14,7 +14,13 @@ It requires [Director MX 2004](https://archive.org/details/director_mx_2004) to 
 
 All changes to the classes inside the .dir are avaliable inside /RetroLauncher.CLI/scripts/
 
-## 🚀 Usage
+---
+
+### Download
+
+You can download the latest releases at: https://github.com/Quackster/RetroLauncher/releases/tag/v0.1.0 
+
+### 🚀 Usage
 
 ```bash
 dotnet run <file1> [--key=value ...]
