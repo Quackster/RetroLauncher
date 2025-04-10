@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<p><font face="Arial, Helvetica, sans-serif" size="4">Using a W3D File</font></p>
+<blockquote> 
+  <blockquote> 
+    <p><font face="Arial, Helvetica, sans-serif" size="2">This time there is no 
+      Havok Export (HKE) file that can be imported. Hence physical information 
+      must be supplied through Lingo or taken directly from the 3D world.</font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2"> First we import the 
+      3D world:</font></p>
+    <ol>
+      <li><font face="Arial, Helvetica, sans-serif" size="2">Click the <b>File 
+        </b>menu. </font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Select <b>Import 
+        </b>from the <b>File </b>menu. </font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Select required 
+        Shockwave 3D (W3D) file from the dialog window. </font></li>
+    </ol>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">This adds the 3D cast 
+      member to the cast. This may then be dragged onto the stage. To create the 
+      empty Havok simulation:</font></p>
+    <ol>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Click the <b>Insert</b> 
+        menu. </font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Select <b>Media 
+        Element </b>from the <b>Insert </b>menu. </font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2">Select <b>Havok Physics 
+        Scene </b>from the <b>Media Element </b>submenu. </font></li>
+    </ol>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">This adds an empty <b>Havok 
+      cast member </b>to the cast. Now add a <b>Physics (No HKE) </b>behavior 
+      to the cast (from the <b>Havok &gt; Setup </b>behavior library). Playing 
+      the movie at this stage will show a static world i.e. we have not associated 
+      any rigid bodies with the 3D models in the W3D file.</font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">Now we need to create 
+      the Havok simulation information by editing the <b>Physics (No HKE) </b>behavior. 
+      The Lingo function below creates two rigid bodies that are added into the 
+      Havok simulation and associated with two 3D models from the W3D file, &quot;Box01&quot; 
+      and &quot;Text01&quot;. The first is a fixed convex rigid body i.e. one 
+      that may never move during the simulation. The second is a concave movable 
+      object. The full details on these functions are available in the Havok Xtra 
+      Lingo Reference manual. </font></p>
+    <blockquote> 
+      <p><font face="Courier New, Courier, mono" size="2">on createScene</font></p>
+      <blockquote> 
+        <p><font face="Courier New, Courier, mono" size="2"> s = member( &quot;HelloWorld&quot; 
+          )<br>
+          hk = member( &quot;BlankHavok&quot; )<br>
+          </font></p>
+        <p><font face="Courier New, Courier, mono" size="2"> -- create ground<br>
+          m = s.model(&quot;Box01&quot;)<br>
+          m.addModifier(#meshdeform)<br>
+          hk.makeFixedRigidBody(m.name)<br>
+          </font></p>
+        <p><font face="Courier New, Courier, mono" size="2"> -- create text<br>
+          m = s.model(&quot;Text01&quot;)<br>
+          m.addModifier(#meshdeform)<br>
+          hk.makeMovableRigidBody(m.name, 100.0, false) </font></p>
+      </blockquote>
+      <p><font face="Courier New, Courier, mono" size="2"> end</font></p>
+    </blockquote>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">In addition to creating 
+      the rigid bodies we can alter their default physical parameters at this 
+      point. Running the movie should result in some physical animation (i.e. 
+      the &quot;Text01&quot; object will fall under gravity).</font></p>
+  </blockquote>
+</blockquote>
+<p>&nbsp;</p>
+</body>
+</html>

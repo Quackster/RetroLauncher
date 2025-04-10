@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "RetroLauncher.CLI": {
+      "commandName": "Project",
+      "commandLineArgs": "projector.exe --infoHost=192.168.0.5 --infoPort=3000 --sso=false",
+      "workingDirectory": "C:\\Users\\alexm\\Documents\\RetroLauncher"
+    }
+  }
+}

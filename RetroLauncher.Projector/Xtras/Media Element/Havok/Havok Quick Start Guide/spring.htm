@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<p><font face="Arial, Helvetica, sans-serif" size="4">Springs and Dashpots</font></p>
+<blockquote> 
+  <blockquote> 
+    <p><font face="Arial, Helvetica, sans-serif" size="2">Now that our scene is 
+      moving in a physical accurate manner we can begin to control and interact 
+      with it. The Havok Xtra provides specific functions to effect individual 
+      rigid bodies. Rigid bodies can have their position and rotation altered 
+      either directly (via a variety of &quot;&#133;MoveTo&quot; functions) or 
+      indirectly (via the simulation by applying forces, impulses or torques). 
+      </font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">Beyond these standard 
+      functions the Havok Xtra also provides integrated and simple constraints 
+      in the form of dashpots and springs. Springs have a rest length and elasticity 
+      and they function, as would the real world equivalent. Dashpots can be thought 
+      of restrictors. Linear dashpots restrict the position of a rigid body. The 
+      position may be restricted to a specific point in the world space or to 
+      a point offset relative to another rigid body. This latter restriction, 
+      for example, would allow a chain of rigid bodies to be created. Angular 
+      dashpots attempt to restrict a rigid body's rotation. This means that a 
+      box, for example, could have its orientation restricted so that it will 
+      always try to be balancing a corner. </font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">We will now alter our 
+      current scene to make it more interesting than just having a box fall on 
+      top of a ball. A linear dashpot can be added to restrict the position of 
+      the box model while still allowing it to spin. Furthermore a strong spring 
+      can be added, attaching the ball model to the position-locked box. This 
+      spring can be set up to continually cause the ball to hit the box introducing 
+      an interesting chaotic interaction.</font></p>
+    <blockquote> 
+      <p><font face="Courier New, Courier, mono" size="2">on createDashpot me</font></p>
+      <blockquote> 
+        <p><font face="Courier New, Courier, mono" size="2">worldPoint = w.model(&quot;TheBox&quot;).transform.position<br>
+          dashpot = hk.makeLinearDashpot( "DashpotName", "TheBox", worldPoint )<br>
+          dashpot.strength = 1000<br>
+          dashpot.damping = 100</font></p>
+      </blockquote>
+      <p><font face="Courier New, Courier, mono" size="2">end</font></p>
+      <p><font face="Courier New, Courier, mono" size="2">on createSpring me</font></p>
+      <blockquote> 
+        <p><font face="Courier New, Courier, mono" size="2">spring = hk.makeSpring( "SpringName", "TheBox", "TheBall" )<br>
+          spring.restLength = 3.5<br>
+          spring.elasticity = 10000<br>
+          spring.damping = 1</font></p>
+      </blockquote>
+      <p><font face="Courier New, Courier, mono" size="2">end</font></p>
+    </blockquote>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">The Lingo script for 
+      the creation of the linear dashpot and spring is shown above. Add this to 
+      section of script to the Behavior. Also call these two new functions within 
+      <b>beginSprite</b> after the physical objects have been created.</font></p>
+    <p align="center"><img src="stagecopy.jpg" width="342" height="281" align="middle"></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">Running the movie should 
+      give a view similar to the stage shown above.</font></p>
+    <p>&nbsp;</p>
+  </blockquote>
+</blockquote>
+</body>
+</html>

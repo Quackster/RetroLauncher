@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<p><font face="Arial, Helvetica, sans-serif" size="4">Using W3D and HKE files</font></p>
+<blockquote> 
+  <blockquote>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">We will assume that 
+      a scene has been constructed in an external 3D modeler and both a W3D and 
+      HKE file exported representing the 3D data and physics data respectively. 
+      For more information on this process consult the Shockwave3D Exporter and 
+      Havok Exporter documentation.</font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">First import the 3D 
+      world:</font></p>
+    <ol>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Click the <b>File 
+        </b>menu. </font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Select <b>Import 
+        </b>from the File menu. </font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Select required 
+        Shockwave 3D (W3D) file from the dialog window. </font></li>
+    </ol>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">This adds the 3D cast 
+      member to the cast. This may then be dragged onto the stage. Now import 
+      the required Havok cast member:</font></p>
+    <ol>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Click the <b>File 
+        </b>menu. </font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Select <b>Import</b> 
+        from the <b>File </b>menu. </font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Select required 
+        Havok Export (HKE) file from the dialog window. </font></li>
+    </ol>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">This adds the Havok 
+      cast member to the cast. Playing the movie at this stage will show a static 
+      world. In order to make the world dynamic the Havok simulation must be initialized 
+      and linked to the 3D world. </font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">Dragging the <b>Physics 
+      (HKE) </b>behavior (located in the <b>Havok &gt; Setup </b>behavior library) 
+      onto the sprite representing a view of the 3D world will do this - ensure 
+      that the <b>Which Havok Cast Member </b>parameter is set to the Havok Physics 
+      Scene member name. This behavior initializes the Havok simulation (links 
+      3D objects from the W3D file to rigid bodies in the HKE file). It also advances 
+      time in the physics simulation after each step of the movie and updates 
+      the positions and orientations of the 3D objects currently under physics 
+      control. You can supply other parameters when the behavior is dragged onto 
+      the stage, but the defaults will usually be fine.</font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">At this point other 
+      behaviors may be dragged onto the stage for additional physical results. 
+      For example, drag the <b>Move Model </b>behavior (found in the <b>Havok 
+      &gt; Control </b>behavior library) onto the stage and select &quot;<b>Any 
+      Model</b>&quot; for the <b>Which Model </b>parameter. Next drop a <b>Mouse 
+      Left </b>trigger onto the stage (from the <b>3D &gt; Triggers </b>behavior 
+      library) and associate the trigger with the <b>Move Model </b>behavior (selectable 
+      in the <b>Select a Group and its Action </b>parameter). </font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">Now it should be possible 
+      to pick up the 3D models in the scene a move them around with the mouse 
+      pointer and the left mouse button. </font></p>
+  </blockquote>
+</blockquote>
+</body>
+</html>

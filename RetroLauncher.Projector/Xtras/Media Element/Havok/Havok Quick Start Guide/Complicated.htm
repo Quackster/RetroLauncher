@@ -1,0 +1,182 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<p><font face="Arial, Helvetica, sans-serif" size="4">An Extended Example</font></p>
+<blockquote> 
+  <blockquote>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">We will start with a 
+      new movie (<b>File &gt; New &gt; Movie</b> or <b>Ctrl+n</b>). Every movie 
+      needs a cast. Our movie will consist of a 3D world and its physical representation.</font></p>
+    <ul>
+      <li><font face="Arial, Helvetica, sans-serif" size="2">Add a blank <b>Havok 
+        Physics Scene </b>member by using the <b>Insert </b>menu: <b>Insert &gt; 
+        Media Element &gt; Havok Physics Scene</b>.</font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Add a blank Shockwave 
+        3D member using <b>Insert &gt; Media Element &gt; Shockwave 3D</b>.</font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Drag the Shockwave 
+        3D member onto the stage to create a sprite.</font></li>
+    </ul>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">Currently our 3D world 
+      is empty. We will now populate it with a few simple objects. This can be 
+      done via a simple Lingo script.</font></p>
+    <ul>
+      <li><font face="Arial, Helvetica, sans-serif" size="2">Add a new behavior 
+        by selecting <b>Window > Inspectors > Behavior </b>on the main menu and 
+        then clicking the <b>+ </b>icon followed by selecting <b>New Behavior</b>. 
+        </font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Drag the new behavior 
+        onto the 3D sprite.</font></li>
+    </ul>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">Add the following text 
+      to the newly create Lingo behavior. This script creates a simple scene made 
+      up from two boxes and a sphere.</font></p>
+    <blockquote> 
+      <p><font face="Courier New, Courier, mono" size="2">property w, hk</font></p>
+      <p><font face="Courier New, Courier, mono" size="2">on beginSprite me</font></p>
+      <blockquote> 
+        <p><font face="Courier New, Courier, mono" size="2">hk = member( 1 )<br>
+          w = member( 2 )<br>
+          <br>
+          <b>hk.initialize</b>( w, 0.1, 1 )<br>
+          <br>
+          createVisibleObjects()<br>
+          createPhysicalObjects()</font></p>
+      </blockquote>
+      <p><font face="Courier New, Courier, mono" size="2">end </font></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<blockquote> 
+  <blockquote> 
+    <blockquote>
+      <p><font face="Courier New, Courier, mono" size="2">on createVisibleObjects 
+        me</font></p>
+      <blockquote>
+        <p><font face="Courier New, Courier, mono" size="2">-- create box<br>
+          mr = w.newModelResource(&quot;TheBoxRes&quot;, #box)<br>
+          mr.width = 2<br>
+          mr.height = 2<br>
+          mr.length = 2<br>
+          m = w.newModel(&quot;TheBox&quot;, mr)<br>
+          m.transform.rotation = vector(0,5,0)<br>
+          m.transform.position = vector(0,0,10)<br>
+          <br>
+          -- create ball<br>
+          mr = w.newModelResource(&quot;TheBallRes&quot;, #sphere)<br>
+          mr.radius = 1<br>
+          m = w.newModel(&quot;TheBall&quot;, mr)<br>
+          m.transform.position = vector(0,0,5)<br>
+          <br>
+          -- create ground<br>
+          mr = w.newModelResource(&quot;TheGroundRes&quot;, #box)<br>
+          mr.width = 15<br>
+          mr.height = 10<br>
+          mr.length = 1<br>
+          m = w.newModel(&quot;TheGround&quot;, mr) <br>
+          <br>
+          -- point camera<br>
+          c = w.camera[1]<br>
+          c.transform.position = vector(0,20,20)<br>
+          c.pointat(m.transform.position + vector(0,0,5), vector(0,0,1))<br>
+          c.hither = 1<br>
+          c.yon = 1000<br>
+          <br>
+          w.directionalPreset = #bottomLeft</font></p>
+      </blockquote>
+      <p><font face="Courier New, Courier, mono" size="2">end</font></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<blockquote> 
+  <blockquote> 
+    <blockquote>
+      <p><font face="Courier New, Courier, mono" size="2">on createPhysicalObjects 
+        me</font></p>
+      <blockquote>
+        <p><font face="Courier New, Courier, mono" size="2"> -- box<br>
+          m = w.model(&quot;TheBox&quot;)<br>
+          m.addModifier(#meshdeform)<br>
+          <b>rb = hk.makeMovableRigidBody(m.name, 50)</b><br>
+          <br>
+          -- ball<br>
+          m = w.model(&quot;TheBall&quot;)<br>
+          m.addModifier(#meshdeform)<br>
+          <b>rb = hk.makeMovableRigidBody(m.name, 100)<br>
+          rb.restitution = 1<br>
+          rb.friction = 0</b><br>
+          <br>
+          -- ground<br>
+          m = w.model(&quot;TheGround&quot;) <br>
+          m.addModifier(#meshdeform)<br>
+          <b>rb = hk.makeFixedRigidBody(m.name)</b></font></p>
+      </blockquote>
+      <p><font face="Courier New, Courier, mono" size="2">end</font></p>
+    </blockquote>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">The lines specific to 
+      the Havok Xtra are highlighted in <b>bold</b>. Full details of these functions 
+      and properties can be found in the Havok Xtra Lingo Reference. We will only 
+      briefly examine them here.</font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">Each physically simulated 
+      scene must be linked to a visible 3D equivalent. To make this link the hk.initialize() 
+      function is passed a reference to the Shockwave 3D cast member representing 
+      the visible world. </font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2"><b>Note:</b> <b>hk.initialize() 
+      </b>must be called first before any other actions relating to our physical 
+      simulation can be preformed.</font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">After initialization 
+      the script creates a number of 3D models that become visible in the scene. 
+      Once created it is possible to take these models and give them physical 
+      properties - make them into rigid bodies. As can be seen in the <b>createPhysicalObjects 
+      </b>function we are making &quot;TheBox&quot; and &quot;TheBall&quot; objects 
+      into movable rigid bodies. Movable rigid bodies have a mass and are free 
+      to move, bounce and spin. &quot;TheGround&quot; is created as a fixed rigid 
+      body that will never move and will never be effected by over objects hitting 
+      it. </font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">At this point, we have 
+      created a simple physical 3D world. However, if the movie is played the 
+      view though our stage sprite still shows a static scene. This is because 
+      the physical simulation must be advanced upon each frame. The Havok Xtra 
+      refers to this as stepping and provides a Lingo function to perform this 
+      action.</font></p>
+  </blockquote>
+</blockquote>
+<blockquote> 
+  <blockquote> 
+    <blockquote> 
+      <p><font face="Courier New, Courier, mono" size="2">on exitFrame me</font></p>
+      <blockquote> 
+        <p><font face="Courier New, Courier, mono" size="2"> <b>hk.step()</b></font></p>
+      </blockquote>
+      <p><font face="Courier New, Courier, mono" size="2">end</font></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<blockquote> 
+  <blockquote> 
+    <blockquote>
+      <p><font face="Courier New, Courier, mono" size="2">on endSprite me</font></p>
+      <blockquote>
+        <p><font face="Courier New, Courier, mono" size="2"> <b>hk.shutdown()</b><br>
+          w.resetWorld()</font></p>
+      </blockquote>
+      <p><font face="Courier New, Courier, mono" size="2">end</font></p>
+    </blockquote>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">Add the above lines 
+      to your behavior script. The call to the stepping function (hk.step) will 
+      be preformed at the end of each frame before the movie advances to the next 
+      one. This causes the simulation to calculate the new positions and orientations 
+      of each model. This means that they are ready to be drawn within the stage 
+      sprite at the start of the new frame. Furthermore, when the movie stops 
+      and before we reset our 3D world to its original blank slate, the physics 
+      simulation needs to be shutdown as well.</font></p>
+  </blockquote>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<p><font face="Arial, Helvetica, sans-serif" size="4">Feedback</font></p>
+<blockquote> 
+  <blockquote> 
+    <p><font face="Arial, Helvetica, sans-serif" size="2">The Havok Xtra can be 
+      a rich source of information beyond the position and orientation of rigid 
+      bodies. At any time we can get a body's velocity or how much force is being 
+      applied to it. We can also get information regarding rigid body collisions. 
+      To finish our example scene we will add a section of Lingo script, which 
+      plays a sound each time the ball strikes the box. The code to do this comes 
+      in two sections. First we must inform the Havok Xtra that we are interested 
+      in collisions between the ball and the box rigid bodies.</font></p>
+  </blockquote>
+</blockquote>
+<blockquote> 
+  <blockquote> 
+    <blockquote> 
+      <p><font face="Courier New, Courier, mono" size="2">on beginSprite me </font></p>
+      <blockquote> 
+        <p><font face="Courier New, Courier, mono" size="2">w = member( 3 )<br>
+          <b>hk</b> = member( 4 )<br>
+          <br>
+          w.resetWorld()<br>
+          <b>hk.initialize</b>( w, 0.1, 1 )<br>
+          <br>
+          createVisibleObjects()<br>
+          createPhysicalObjects()<br>
+          createDashpot()<br>
+          createSpring()<br>
+          <b>hk.registerInterest</b>( &quot;TheBox&quot;, &quot;TheBall&quot;, 
+          10, 0, #<b>collision</b>, me )</font></p>
+      </blockquote>
+      <p><font face="Courier New, Courier, mono" size="2">end </font></p>
+    </blockquote>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">The script above shows 
+      the final version of the beginSprite function. The line shown in <b>bold</b> 
+      is where interest in the collision is declared. When a collision between 
+      &quot;TheBox&quot; and &quot;TheBall&quot; occurs the second section of 
+      code (the <b>collision</b> function) will be invoked. The script for the 
+      &quot;collision&quot; function is below. </font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2"><b>Note</b>: The code 
+      below assumes that the sound file to be played in stored as the movie cast 
+      member &quot;Sound&quot;.</font></p>
+    <blockquote> 
+      <p><font face="Courier New, Courier, mono" size="2">on collision me, details</font></p>
+      <blockquote> 
+        <p><font face="Courier New, Courier, mono" size="2">sound(1).volume = 
+          integer( 255 / power( details[5], 1.1 ) )<br>
+          sound(1).play( member( &quot;Sound&quot; ) )</font></p>
+      </blockquote>
+      <p><font face="Courier New, Courier, mono" size="2">end</font></p>
+    </blockquote>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">As can be scene this 
+      collision callback function accepts a parameter called &quot;details&quot;. 
+      This parameter contains all the information known about the collision including 
+      names of the rigid bodies involved, the point at which the collision occurred 
+      and relative direction of the collision. The final piece of information 
+      passed to the callback is a value representing how strong the collision 
+      was. In the above example we use this value to assign a volume to the sound 
+      we are to play. This means that the harder the ball strikes the box then 
+      the louder the sound.</font></p>
+    <p>&nbsp;</p>
+  </blockquote>
+</blockquote>
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetroLauncher.CLI", "RetroLauncher.CLI.csproj", "{2A465AE3-5E37-CC0E-E8E1-86A7D4FDEF1F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A465AE3-5E37-CC0E-E8E1-86A7D4FDEF1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A465AE3-5E37-CC0E-E8E1-86A7D4FDEF1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A465AE3-5E37-CC0E-E8E1-86A7D4FDEF1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A465AE3-5E37-CC0E-E8E1-86A7D4FDEF1F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C99EA84-33F7-46C6-B086-F37070ECE078}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<p><font face="Arial, Helvetica, sans-serif" size="4">Through Lingo</font> </p>
+<blockquote> 
+  <blockquote>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">This time there is no 
+      Havok Export (HKE) file and no Shockwave 3D (W3D) file that can be imported. 
+      Hence display and physical information must be created directly in Lingo.</font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">First, create the empty 
+      3D world:</font></p>
+    <ol>
+      <li><font face="Arial, Helvetica, sans-serif" size="2">Click the <b>Insert</b> 
+        menu. </font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2">Select <b>Media Element 
+        </b>from the <b>Insert </b>menu. </font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2">Select <b>Shockwave 
+        3D</b> from the <b>Media Element </b>submenu. </font></li>
+    </ol>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">This adds the 3D cast 
+      member to the cast. This may then be dragged onto the stage. To create the 
+      empty Havok simulation:</font></p>
+  </blockquote>
+</blockquote>
+<ol>
+  <ol>
+    <ol>
+      <li><font face="Arial, Helvetica, sans-serif" size="2">Click the <b>Insert</b> 
+        menu. </font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Select <b>Media 
+        Element </b>from the <b>Insert</b> menu. </font></li>
+      <li><font face="Arial, Helvetica, sans-serif" size="2"> Select <b>Havok 
+        Physics Scene </b>from the <b>Media Element </b>submenu. </font></li>
+    </ol>
+  </ol>
+</ol>
+<blockquote> 
+  <blockquote> 
+    <p><font face="Arial, Helvetica, sans-serif" size="2">This adds an empty Havok 
+      cast member to the cast. Now add a <b>Physics (No HKE) </b>behavior to the 
+      cast (from the <b>Havok &gt; Setup</b> behavior library) by dragging it 
+      onto the stage - ensure that the <b>Which Havok Cast Member </b>parameter 
+      is set to the <b>Havok Physics Scene </b>member name.</font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">Now we need to create 
+      the physics scene as well as the 3D scene from scratch.</font></p>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">The Lingo function below 
+      creates the 3D models for the scene followed by the rigid bodies. In this 
+      case the ground primitive and text rigid bodies are actually constructed 
+      as axis-aligned bounding boxes.</font></p>
+    <blockquote> 
+      <p><font size="2" face="Courier New, Courier, mono">on createScene</font></p>
+      <blockquote> 
+        <p><font size="2" face="Courier New, Courier, mono"> s = member( &quot;BlankScene&quot; 
+          )<br>
+          hk = member( &quot;BlankHavok&quot; )<br>
+          txt = member( &quot;Text&quot; )<br>
+          <br>
+          s.resetWorld()<br>
+          <br>
+          -- create ground<br>
+          mr = s.newmodelresource(&quot;GroundPlaneRes&quot;, #box)<br>
+          mr.width = 150<br>
+          mr.length = 50<br>
+          mr.height = 100<br>
+          m = s.newmodel(&quot;GroundPlane&quot;, mr)<br>
+          m.transform.rotation = vector(-90,0,0)<br>
+          m.transform.position = vector(0,250,-200)<br>
+          <br>
+          m.addModifier(#meshdeform)<br>
+          hk.makeFixedRigidBody(m.name, true, #box)<br>
+          <br>
+          -- point camera<br>
+          c = s.camera[1]<br>
+          c.transform.position = vector(50,-50,-100)<br>
+          c.pointat(m.transform.position + vector(0,0,50), vector(0,0,1))<br>
+          c.hither = 1<br>
+          c.yon = 1000<br>
+          <br>
+          -- create text<br>
+          txt.text = &quot;Hello World&quot;<br>
+          mr = txt.extrude3D( s )<br>
+          mr.bevelType = 1 <br>
+          mr.bevelDepth = 0.1<br>
+          mr.smoothness = 6 <br>
+          m = s.newModel(&quot;Text&quot;, mr)<br>
+          m.transform.position = vector(-75,250,0)<br>
+          m.transform.rotation = vector(90,0,0)<br>
+          m.addModifier(#meshdeform)<br>
+          hk.makeMovableRigidBody(m.name, 1000.0, true, #box)</font></p>
+      </blockquote>
+      <p><font size="2" face="Courier New, Courier, mono">end</font></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<p>&nbsp;</p>
+</body>
+</html>
