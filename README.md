@@ -32,7 +32,7 @@ All changes to the classes inside the .dir are avaliable inside /RetroLauncher.C
 ### 🚀 Usage
 
 ```bash
-dotnet run <file1> [--key=value ...]
+RetroLauncher.CLI.exe <projector file1> [--key=value ...]
 ```
 
 ### 🔧 Supported Command-Line Flags
@@ -58,7 +58,7 @@ You can override default values using the following flags:
 ## 💡 Example
 
 ```bash
-RetroLauncher.CLI projector.exe --infoHost=192.168.0.5 --infoPort=3000 --sso=true --ssoPath=http://localhost/api/login
+RetroLauncher.CLI.exe projector.exe --infoHost=192.168.0.5 --infoPort=3000 --sso=true --ssoPath=http://localhost/api/login
 ```
 
 This command will:
