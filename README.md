@@ -2,6 +2,8 @@
 
 A command-line tool to patch the Habbo Shockwave projector related files (`.exe`, `.dir`). 
 
+**Note**: The RetroLauncher.CLI program gets detected as a false positve as "Trojan:Win32/Wacatac.C!ml" by Windows Defender.
+
 How it works is that it replaces the bytes of the executable itself with obfuscated values that setup the client. This allows people to easily create their own Shockwave projector for their Habbo private servers.
 
 During its usage you'll see it creates a file called offsets.ini - this is so any subsequent patching will be faster, as it doesn't have to search for the offsets to replace the bytes at.
