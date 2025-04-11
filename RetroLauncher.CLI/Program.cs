@@ -135,8 +135,8 @@ end";
                 .Replace("{projector.movieDCR}", projector.MoviePath)
                 .Replace("{projector.externalVariables}", projector.ExternalVariables)
                 .Replace("{projector.externalTexts}", projector.ExternalTexts)
-                .Replace("{projector.sitePath}", "http://localhost")
-                .Replace("{projector.ssoPath}", "http://localhost/api/login")
+                .Replace("{projector.sitePath}", projector.SitePath)
+                .Replace("{projector.ssoPath}", projector.SsoPath)
                 .Replace("{projector.isSsoLogin}", projector.IsSsoEnabled ? "TRUE" : "FALSE")
                 .Replace("{projector.pProjectorSizeWidth}", projector.Width)
                 .Replace("{projector.pProjectorSizeHeight}", projector.Height);
