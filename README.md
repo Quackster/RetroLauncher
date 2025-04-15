@@ -69,6 +69,8 @@ This command will:
 - Enable SSO login
 - Tell the projector to make a request to ``http://localhost/api/login`` with ``username`` and ``password`` as GET parameters.
 
+The /api/login is now available on Havana v1.3 and later.
+
 ---
 
 ## 📁 Output
